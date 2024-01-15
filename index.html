@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="input-task">
+            <i class="fa-solid fa-note-sticky"></i>
+            <input type="text" class="input-value" id="user-input">
+            <i class="fa-solid fa-plus" id="submit"></i>
+
+            <div class="content">
+                <p class="complete-all-task">
+
+                    <i class="fas fa-check-double"></i>
+                    Complete all Task
+                    
+                </p>
+                <p>Clear completed</p>
+            </div>
+        </div>
+
+        <div class="display-task">
+            <!-- <div class="task">
+                <input type="checkbox" class="checkbox" id="task1">
+                <label for="task1">Task 1</label>
+            </div>-->
+        </div>
+        
+        <div class="summary">
+            <div id="task-left">
+                0 task left
+            </div>
+            <div class="task-section">
+                <p>All</p>
+                <p>Uncomplete</p>
+                <p>Completed</p>
+            </div>
+        </div>
+
+    </div>
+    
+    <script src="https://kit.fontawesome.com/660b9b56e4.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
