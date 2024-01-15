@@ -8,8 +8,7 @@ let checkboxes
 let divEle
 let faPlus = document.querySelector('.fa-plus');
 let index;
-
-let completeAllTask = document.querySelector('.complete-all-task');
+let xMarks;
 
 
 // call submitFunction() on click of plus icon
@@ -48,9 +47,13 @@ function renderTask(){
 
         //Note-dataIndex will be used to identify each value seperately
         divEle = `<div class="task">
+        <div class="sub-task">
         <input type="checkbox" class="checkbox" id="task${i}" data-index="${i}">
         <label for="task${i}">${taskName}</label>
+        </div>
+        <i class="fa-solid fa-xmark" data-index="${i}"></i> 
         </div>`;
+
         // add the "divEle" div inside the "display-task" div of html
         displayTask.insertAdjacentHTML('beforeEnd', divEle);
     }
@@ -62,6 +65,12 @@ function renderTask(){
     checkboxes = document.querySelectorAll('.checkbox'); 
     checkboxes.forEach((checkbox) => {
         checkbox.addEventListener('change', handleCheckboxChange);
+    });
+
+    // Add event listeners to all the x-mark icons
+     xMarks = document.querySelectorAll('.fa-xmark');
+    xMarks.forEach((xMark) => {
+        xMark.addEventListener('click', handleDeleteTask);
     });
 
 
@@ -97,14 +106,8 @@ function handleCheckboxChange(event){
   
 }
 
-completeAllTask.addEventListener('click', (event) => {
-// here status of all event should get converted to completed and all the checkboxes should get tick mark in it, as is the case when individial checkboxes are getting ticked
-    for(let j = 0; j<tasks.length; j++){
-        tasks[j].status = 'completed';
-    }
-
-    checkboxes.forEach((checkbox) => {
-        checkbox.checked = true;
-    });
-    console.log(tasks);
-})
+function handleDeleteTask(event) {
+    let taskIndex = event.target.getAttribute('data-index');
+    tasks.splice(taskIndex, 1);
+    renderTask();
+}
